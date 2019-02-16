@@ -1,0 +1,7 @@
+{
+  "name": "581_P1_GestureUnlock",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
