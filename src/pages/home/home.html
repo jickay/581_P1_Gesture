@@ -4,9 +4,20 @@
 
 <ion-content>
   <div id="bkgd" class="background" swipeAll (swipe)="onSwipe($event)">
-      <div class="icon-container" text-center>
-        <ion-icon id="icon" name="{{iconName}}"></ion-icon>
-      </div> 
+    <div class="scrollY-container" [@scrollY]="scrollState">
+      <div class="icon-container-1" text-center>
+        <ion-icon id="icon" name="cafe"></ion-icon>
+      </div>
+      <div class="icon-container-2" text-center>
+        <ion-icon id="icon" name="heart"></ion-icon>
+      </div>
+      <div class="icon-container-3" text-center>
+        <ion-icon id="icon" name="pizza"></ion-icon>
+      </div>
+      <div class="icon-container-4" text-center>
+        <ion-icon id="icon" name="calculator"></ion-icon>
+      </div>
+    </div>
   </div>
    
 </ion-content>
