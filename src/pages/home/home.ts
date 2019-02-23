@@ -8,6 +8,10 @@ let t1 = (translateStart).toString() + "px";
 let t2 = -(translateSize*1).toString() + "px";
 let t3 = -(translateSize*2).toString() + "px";
 let t4 = -(translateSize*3).toString() + "px";
+let t5 = -(translateSize*4).toString() + "px";
+let t6 = -(translateSize*5).toString() + "px";
+let t7 = -(translateSize*6).toString() + "px";
+let t8 = -(translateSize*7).toString() + "px";
 
 @Component({
   selector: 'page-home',
@@ -26,7 +30,25 @@ let t4 = -(translateSize*3).toString() + "px";
       state('4', style({
         transform: `translateY(${t4})`
       })),
-      transition('* => *', animate('.3s'))
+      state('5', style({
+        transform: `translateY(${t5})`
+      })),
+      state('6', style({
+        transform: `translateY(${t6})`
+      })),
+      state('7', style({
+        transform: `translateY(${t7})`
+      })),
+      state('8', style({
+        transform: `translateY(${t8})`
+      })),
+      transition('* => *', animate('.25s'))
+    ]),
+    trigger('unlock', [
+      state('1', style({
+        transform: 'rotate(1080deg) scale(10.0)',
+      })),
+      transition('* => *', animate('1s'))
     ])
   ]
 })
@@ -35,15 +57,10 @@ export class HomePage {
   private delay = 10;
   private scrollStateInt = 1;
   private scrollState = this.scrollStateInt.toString();
-  private scrollUpStateBottom = 'start';
 
-  private iconName = "cafe";
-  private iconTopInt = 350;
-  private iconTop = this.iconTopInt.toString() + "px";
-  private iconBottomTopInt = 1000;
-  private iconBottomTop = this.iconBottomTopInt.toString() + "px";
+  private unlockState = '0';
   
-  private colourArr: string[] = ["#0033ff","#ff0000","#ffa500","#009900","#aaaaaa"];
+  private colourArr: string[] = ["#6ba3ff","#70ffdb","#5bff81","#ffe228","#f49929","#fc6767","#ff87e9","#9e51f7"];
   private colourIndex = 0;
 
   constructor(public navCtrl: NavController) {
@@ -63,55 +80,68 @@ export class HomePage {
 
   onLeftSwipe(e) {
     console.log("Left");
-    // if (e.target.id == "bkgd") {
-    //   e.target.style.backgroundColor = "red";
-    // }
-    if(this.colourIndex==this.colourArr.length-1) {
-      this.colourIndex=0
+
+    if(this.colourIndex == this.colourArr.length-1) {
+      this.colourIndex = 0
     } else {
       this.colourIndex++;     
     }
+    console.log("color index: " + this.colourIndex);
     document.getElementById("bkgd").style.backgroundColor = this.colourArr[this.colourIndex];
+
+    this.checkUnlock();
   }
 
   onRightSwipe(e) {
     console.log("Right");
 
-    // if (e.target.id == "bkgd") {
-    //   e.target.style.backgroundColor = "yellow";
-    // }
-    if(this.colourIndex==0) {
-      this.colourIndex=this.colourArr.length-1
+    if(this.colourIndex == 0) {
+      this.colourIndex = this.colourArr.length-1
     } else {
       this.colourIndex--;     
     }
+    console.log("color index: " + this.colourIndex);
+
     document.getElementById("bkgd").style.backgroundColor = this.colourArr[this.colourIndex];
+
+    this.checkUnlock();
   }
 
   onUpSwipe(e) {
     console.log("Up");
-    let icon = document.querySelector(".icon-container");
-    let iconBottom = document.querySelector(".icon-container-bottom");
 
-    if (this.scrollStateInt < 4) {
+    if (this.scrollStateInt < 8) {
       this.scrollStateInt++;
       this.scrollState = this.scrollStateInt.toString();
       console.log(this.scrollStateInt);
     }
+
+    this.checkUnlock();
   }
 
   onDownSwipe(e) {
     console.log("Down");
+
     if (this.scrollStateInt > 1) {
       this.scrollStateInt--;
       this.scrollState = this.scrollStateInt.toString();
       console.log(this.scrollStateInt);
     }
-    // this.scrollUpState = 'down';
-    // this.scrollUpStateBottom = 'down';
 
-    // this.iconName = "pizza";
+    this.checkUnlock();
   }
 
+  checkUnlock() {
+    let targetIcon = 4;
+    let targetColor = 4;
 
+    setTimeout(() => {
+      if (this.scrollStateInt == targetIcon && this.colourIndex+1 == targetColor) {
+        console.log("unlock triggered!");
+        this.unlockState = '1';
+      }
+    }, 500)
+
+    
+  }
 }

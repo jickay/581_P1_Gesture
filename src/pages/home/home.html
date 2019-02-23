@@ -5,17 +5,29 @@
 <ion-content>
   <div id="bkgd" class="background" swipeAll (swipe)="onSwipe($event)">
     <div class="scrollY-container" [@scrollY]="scrollState">
-      <div class="icon-container-1" text-center>
+      <div class="icon-container icon-container-1" text-center>
         <ion-icon id="icon" name="heart"></ion-icon>
       </div>
-      <div class="icon-container-2" text-center>
+      <div class="icon-container icon-container-2" [@unlock]="unlockState" text-center>
         <ion-icon id="icon" name="cube"></ion-icon>
       </div>
-      <div class="icon-container-3" text-center>
+      <div class="icon-container icon-container-3" [@unlock]="unlockState" text-center>
         <ion-icon id="icon" name="moon"></ion-icon>
       </div>
-      <div class="icon-container-4" text-center>
+      <div class="icon-container icon-container-4" [@unlock]="unlockState" text-center>
         <ion-icon id="icon" name="leaf"></ion-icon>
+      </div>
+      <div class="icon-container icon-container-5" [@unlock]="unlockState" text-center>
+        <ion-icon id="icon" name="flask"></ion-icon>
+      </div>
+      <div class="icon-container icon-container-6" [@unlock]="unlockState" text-center>
+        <ion-icon id="icon" name="headset"></ion-icon>
+      </div>
+      <div class="icon-container icon-container-7" [@unlock]="unlockState" text-center>
+        <ion-icon id="icon" name="paper-plane"></ion-icon>
+      </div>
+      <div class="icon-container icon-container-8" [@unlock]="unlockState" text-center>
+        <ion-icon id="icon" name="radio"></ion-icon>
       </div>
     </div>
   </div>

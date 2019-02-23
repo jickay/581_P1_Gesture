@@ -1,12 +1,13 @@
 page-home {
+    $transitionSpeed: 250ms;
     & .background {
         margin: 0px !important;
         width: 100%;
         height: 200%;
-        background-color: orange;
-        -webkit-transition: background-color 750ms linear;
-        -ms-transition: background-color 750ms linear;
-        transition: background-color 750ms linear;
+        background-color: #6ba3ff;
+        -webkit-transition: background-color $transitionSpeed linear;
+        -ms-transition: background-color $transitionSpeed linear;
+        transition: background-color $transitionSpeed linear;
     }
 
     & .scrollY-container {
@@ -15,7 +16,7 @@ page-home {
 
     $iconSize: 300px;
     & .icon-container-1 { margin-top: 0px !important; }
-    & .icon-container-1, .icon-container-2, .icon-container-3, .icon-container-4, {
+    & .icon-container {
         position: relative;
         left: 50%;
         margin-left: -$iconSize/2;
@@ -36,5 +37,9 @@ page-home {
     & .icon-container-2 { top: $scrollSize*2 }
     & .icon-container-3 { top: $scrollSize*3 }
     & .icon-container-4 { top: $scrollSize*4 }
+    & .icon-container-5 { top: $scrollSize*5 }
+    & .icon-container-6 { top: $scrollSize*6 }
+    & .icon-container-7 { top: $scrollSize*7 }
+    & .icon-container-8 { top: $scrollSize*8 }
 
 }
