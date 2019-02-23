@@ -42,6 +42,9 @@ export class HomePage {
   private iconTop = this.iconTopInt.toString() + "px";
   private iconBottomTopInt = 1000;
   private iconBottomTop = this.iconBottomTopInt.toString() + "px";
+  
+  private colourArr: string[] = ["#0033ff","#ff0000","#ffa500","#009900","#aaaaaa"];
+  private colourIndex = 0;
 
   constructor(public navCtrl: NavController) {
 
@@ -60,17 +63,29 @@ export class HomePage {
 
   onLeftSwipe(e) {
     console.log("Left");
-    if (e.target.id == "bkgd") {
-      e.target.style.backgroundColor = "red";
+    // if (e.target.id == "bkgd") {
+    //   e.target.style.backgroundColor = "red";
+    // }
+    if(this.colourIndex==this.colourArr.length-1) {
+      this.colourIndex=0
+    } else {
+      this.colourIndex++;     
     }
+    document.getElementById("bkgd").style.backgroundColor = this.colourArr[this.colourIndex];
   }
 
   onRightSwipe(e) {
     console.log("Right");
 
-    if (e.target.id == "bkgd") {
-      e.target.style.backgroundColor = "yellow";
+    // if (e.target.id == "bkgd") {
+    //   e.target.style.backgroundColor = "yellow";
+    // }
+    if(this.colourIndex==0) {
+      this.colourIndex=this.colourArr.length-1
+    } else {
+      this.colourIndex--;     
     }
+    document.getElementById("bkgd").style.backgroundColor = this.colourArr[this.colourIndex];
   }
 
   onUpSwipe(e) {

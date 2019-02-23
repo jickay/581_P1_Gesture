@@ -4,6 +4,9 @@ page-home {
         width: 100%;
         height: 200%;
         background-color: orange;
+        -webkit-transition: background-color 750ms linear;
+        -ms-transition: background-color 750ms linear;
+        transition: background-color 750ms linear;
     }
 
     & .scrollY-container {
